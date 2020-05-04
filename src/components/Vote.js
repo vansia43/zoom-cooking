@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -17,12 +17,15 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Vote() {
+class Vote extends Component {
 
-  const classes = useStyles();
-
+render(){
+  const {
+  counters
+ } = this.props;
+ 
   return (
-    <Card className={classes.root}>
+    <Card>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             Mac and Cheese Vegan
@@ -36,8 +39,12 @@ export default function Vote() {
         <Button size="small" color="primary">
           Vote
         </Button>
-        Count: 1
+        Count: {this.props.counters}
       </CardActions>
     </Card>
   );
 }
+}
+
+export default Vote;
+

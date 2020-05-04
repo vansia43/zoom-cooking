@@ -1,5 +1,6 @@
-import React from 'react';
 import logo from './logo.svg';
+import React, { Component } from "react";
+
 import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -9,43 +10,66 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Steps from './components/Steps';
 import Guide from './components/Guide';
 import Vote from './components/Vote';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 
+ function Childs() {
+   // We can use the `useParams` hook here to access
+   // the dynamic pieces of the URL.
+   let { id } = useParams();
 
-function App() {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 2,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }));
+   return (
+     <div>
+      <Guide id={id} />
+       <h3>ID: {id}</h3>
+     </div>
+   );
+ }
+
+class App extends Component{
   
-  const theme = createMuiTheme({
-  palette: {
-    type: 'dark',
-  },
-});
-
-
-  const classes = useStyles();
+  state = {
+    counters: 12
+  };
+  
+ render() {
+   
   return (
+    
     <div className="App-header">
-    <ThemeProvider>
+    
       <header>
         <p>
-          Zoom+Cooking+Friends = Delicious 
+          Zoom+Cooking+Friends = Delicious!
         </p>
       </header>
-      <div className={classes.root}>
+      <Router>
+         <div>
+           <header>
+             <Link to="/room">Vegan</Link>
+             {' '}
+             <Link to="/">Login</Link>
+             {' '}
+           </header>
+           <main>
+             <Switch>
+               <Route exact path="/" render={(props) => <Vote {...props} counters={this.state.counters} />}/>
+               <Route exact path="/room" render={(props) => <Vote {...props} counters={21} />}/>
+             </Switch>
+           </main>
+         </div>
+       </Router>
+      <div>
       <Grid container spacing={3}>
       <Grid item xs>
       <iframe width="900" height="600" src="http://localhost:9999/" frameborder="0" allowfullscreen></iframe>
@@ -58,9 +82,9 @@ function App() {
     </Grid>
       
       </div>
-      </ThemeProvider>
     </div>
   );
+}
 }
 
 export default App;

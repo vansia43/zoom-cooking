@@ -8,6 +8,13 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 
 const theme = createMuiTheme({
   palette: {
@@ -33,7 +40,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 function getSteps() {
+
   return ['Cut vegtables', 'Boil Vegtables and Pasta', 'Create cheese sauce '];
 }
 
@@ -52,7 +61,10 @@ function getStepContent(step) {
   }
 }
 
-export default function VerticalLinearStepper() {
+export default function Guide() {
+  
+
+  
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -68,10 +80,11 @@ export default function VerticalLinearStepper() {
   const handleReset = () => {
     setActiveStep(0);
   };
-
+const id ="iu"
   return (
     <ThemeProvider theme={theme}>
     <div className={classes.root}>
+    <div>{id}</div>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>
@@ -114,3 +127,4 @@ export default function VerticalLinearStepper() {
 
   );
 }
+
