@@ -42,18 +42,6 @@ function Cook() {
   },
 });
 
-function Childs() {
-  // We can use the `useParams` hook here to access
-  // the dynamic pieces of the URL.
-  let { id } = useParams();
-
-  return (
-    <div>
-     <Guide id={id} />
-      <h3>ID: {id}</h3>
-    </div>
-  );
-}
   const classes = useStyles();
   return (
     
@@ -61,7 +49,7 @@ function Childs() {
     
     <ThemeProvider>
 
-      <div className={classes.root}>
+      <div>
       <Grid container spacing={3}>
       <Grid item xs>
       <iframe width="900" height="600" src="http://localhost:9999/" frameborder="0" allowfullscreen></iframe>

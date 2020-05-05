@@ -12,9 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Guide from './components/Guide';
 import Vote from './components/Vote';
-
-import Setup from './components/Setup';
-import Cook from './components/Cook';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -26,7 +23,18 @@ import {
   useParams
 } from "react-router-dom";
 
+ function Childs() {
+   // We can use the `useParams` hook here to access
+   // the dynamic pieces of the URL.
+   let { id } = useParams();
 
+   return (
+     <div>
+      <Guide id={id} />
+       <h3>ID: {id}</h3>
+     </div>
+   );
+ }
 
 class App extends Component{
   
@@ -38,32 +46,43 @@ class App extends Component{
    
   return (
     
+    <div className="App-header">
     
-  
-
-
+      <header>
+        <p>
+          Zoom+Cooking+Friends = Delicious!
+        </p>
+      </header>
       <Router>
-      <div className="App-header">
          <div>
            <header>
-           <p>
-             Zoom+Cooking+Friends = Delicious!
-           </p>
-             <Link to="/">Setup</Link>
+             <Link to="/room">Vegan</Link>
              {' '}
-             <Link to="/cook">Cook</Link>
+             <Link to="/">Login</Link>
              {' '}
            </header>
-             </div>
            <main>
              <Switch>
-               <Route exact path="/" render={(props) => <Setup {...props} counters={this.state.counters} />}/>
-               <Route exact path="/cook" render={(props) => <Cook {...props} counters={21} />}/>
+               <Route exact path="/" render={(props) => <Vote {...props} counters={this.state.counters} />}/>
+               <Route exact path="/room" render={(props) => <Vote {...props} counters={21} />}/>
              </Switch>
            </main>
          </div>
        </Router>
-  
+      <div>
+      <Grid container spacing={3}>
+      <Grid item xs>
+      <iframe width="900" height="600" src="http://localhost:9999/" frameborder="0" allowfullscreen></iframe>
+
+    </Grid>
+
+    <Grid item xs>
+      <Guide/>
+    </Grid>
+    </Grid>
+      
+      </div>
+    </div>
   );
 }
 }

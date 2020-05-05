@@ -18,12 +18,22 @@ const useStyles = makeStyles({
 });
 
 class Vote extends Component {
-
-render(){
-  const {
-  counters
- } = this.props;
+  constructor(props) {
+   super(props);
+   this.state = {
+      counters: 12,
+   };
+ }
  
+addVote(){
+  this.setState({
+        counters: this.state.counters +1
+      });
+};
+render(){
+
+
+
   return (
     <Card>
         <CardContent>
@@ -36,10 +46,10 @@ render(){
           </Typography>
         </CardContent>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={() => this.addVote()}>
           Vote
         </Button>
-        Count: {this.props.counters}
+        Count: {this.state.counters}
       </CardActions>
     </Card>
   );
