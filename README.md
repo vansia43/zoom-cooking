@@ -1,4 +1,4 @@
 # Zoom Cooking App
 
-React app with *Zoom* API integration to cook online with your friends. 
+React app with *Zoom* API integration for cooking online with your friends. 
 
