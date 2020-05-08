@@ -84,7 +84,7 @@ const id ="iu"
   return (
     <ThemeProvider theme={theme}>
     <div className={classes.root}>
-    <div>{id}</div>
+    <div>Vegan Cheese </div>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>

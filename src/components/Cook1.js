@@ -7,9 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import Guide from '../components/Guide';
 
 const useStyles = makeStyles({
   root: {
@@ -19,11 +16,7 @@ const useStyles = makeStyles({
     height: 140,
   },
 });
-const theme = createMuiTheme({
-  palette: {
-    type: 'dark',
-  },
-});
+
 class Cook extends Component {
   constructor(props) {
    super(props);
@@ -42,24 +35,23 @@ render(){
 
 
   return (
-    <div>
-    
-      <div>
-      <Grid container spacing={3}>
-      <Grid item xs>
-      <iframe width="900" height="600" src="http://localhost:9999/" frameborder="0" allowfullscreen></iframe>
-
-    </Grid>
-<ThemeProvider theme={theme}>
-    <Grid item xs>
-      <Guide/>
-    </Grid>
-      </ThemeProvider>
-    </Grid>
-  
-      
-      </div>
-    </div>
+    <Card>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            Mac and Cheese Vegan
+          </Typography>
+          
+          <Typography variant="body2" color="textSecondary" component="p">
+            Delicious Vegan Mac and cheese with carrort potato and oninon sauce 
+          </Typography>
+        </CardContent>
+      <CardActions>
+        <Button size="small" color="primary" onClick={() => this.addVote()}>
+          Vote
+        </Button>
+        Count: {this.state.counters}
+      </CardActions>
+    </Card>
   );
 }
 }
