@@ -47,7 +47,7 @@ class App extends Component{
          <div>
            <header>
            <p>
-             Zoom+Cooking+Friends = Delicious!!
+             Zoom+Cooking+Friends = Delicious!
            </p>
              <Link to="/">Setup</Link>
              {' '}
